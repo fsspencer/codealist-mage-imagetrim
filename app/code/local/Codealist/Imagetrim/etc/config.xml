@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- /**
+ * 
+ * This extension requires 
+ * PHP ImageMagick installed in you webserver
+ * otherwise it won't trim your images
+ *
+ * Remember to clear the Images cache after installing
+ * @author: Francis S. Spencer (codealist.com)
+ * 
+ */ -->
+<config>
+
+    <modules>
+        <Codealist_Imagetrim>
+            <version>1.0.0.0</version>
+        </Codealist_Imagetrim>
+    </modules>
+
+    <global>
+        <helpers>
+            <catalog>
+                <rewrite>
+                    <image>Codealist_Imagetrim_Helper_Trim</image>
+                </rewrite>
+            </catalog>
+            <codealist_imagetrim>
+                <class>Codealist_Imagetrim_Helper</class>
+            </codealist_imagetrim>
+        </helpers>
+    </global>
+
+</config>

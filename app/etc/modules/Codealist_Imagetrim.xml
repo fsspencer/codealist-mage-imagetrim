@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Codealist module
+ *
+ *
+ * @category    Codealist
+ * @package     Codealist_Imagetrim
+ */
+-->
+<config>
+    <modules>
+        <Codealist_Imagetrim>
+            <active>true</active>
+            <codePool>local</codePool>            
+        </Codealist_Imagetrim>
+    </modules>
+</config>

@@ -53,21 +53,21 @@ class Codealist_Imagetrim_Helper_Trim extends Mage_Catalog_Helper_Image
      */
     public function trim()
     {
-    	if(!class_exists('Imagick')) {
-    		Mage::log('ImageMagick not installed');
-    		return $this;
-    	}
-    	try {
-            if(!$this->_getModel()->isCached()) {
-                $image = new Imagick($this->_getModel()->getBaseFile());
-                $image->borderImage("#FFFFFF", 1, 1); 
-                // $image->setImagePage(0, 0, 0, 0);
-                $image->trimImage(0);
-                $image->writeImage($this->getAuxPath('jpg'));
+    	if(extension_loaded('imagick')) {
+            try {
+                if(!$this->_getModel()->isCached()) {
+                    $image = new Imagick($this->_getModel()->getBaseFile());
+                    $image->setImageBackgroundColor('white');
+                    $image->setImageAlphaChannel(11);
+                    $image = $image->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
+                    $image->borderImage("#FFFFFF", 1, 1);
+                    $image->trimImage(0);
+                    $image->writeImage($this->getAuxPath('jpg'));
+                }
+            } catch(Exception $e) {
+                Mage::logException($e);
             }
-    	} catch(Exception $e) {
-    		Mage::logException($e);
-    	}
+        }
         
         return $this;
     }
